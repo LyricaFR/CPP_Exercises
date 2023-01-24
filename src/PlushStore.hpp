@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 class PlushStore{
     public:
@@ -47,7 +48,15 @@ class PlushStore{
             _stock++;
         }
         _experience++;
+        plushies.emplace_back(Plush(cost + _experience));
         return cost + _experience;
+    }
+
+    std::optional<Plush> buy(int price){
+        for (int i = 0; i < plushies.size(); i++){
+            if (price > plushies.at(1).get_cost())
+                return
+        }
     }
 
     private:
@@ -56,4 +65,5 @@ class PlushStore{
     unsigned int _stock = 0;
     int _debt = 0;
     int _experience = 0;
+    std::vector<Plush> plushies;
 };
