@@ -61,23 +61,24 @@ Person1 cn{celine+" "+noel};
 In each of the following case:
 
 - Q22.1 (Youssef):
-  * a. Is the content of string `youssef_bergeron_name` copied to call `Person1(const std::string& name)`?
-  * b. Is it copied to execute  `_name { name }` ?
-  * c. How many copies in total? Are some copy unnecessary ?
+  * a. Is the content of string `youssef_bergeron_name` copied to call `Person1(const std::string& name)`? Nope
+  * b. Is it copied to execute  `_name { name }` ?  Yos
+  * c. How many copies in total? Are some copy unnecessary ?    2, None
 - Q22.2 (Clément):
-  * a. Is the content of string `clement_chomicki_name` copied to call `Person1(const std::string& name)`?
-  * b. Is it copied to execute  `_name { name }` ?
-  * c. How many copies in total? Are some copy unnecessary ?
+  * a. Is the content of string `clement_chomicki_name` copied to call `Person1(const std::string& name)`? Nope
+  * b. Is it copied to execute  `_name { name }` ?  Yos
+  * c. How many copies in total? Are some copy unnecessary ?    2, One unnecessary copy : _name { name }, there is only one constructor, none with &&. 
+                                                                We don't need the string anymore so instead of copying it, we should have moved it.
 - Q22.3 (Victor): 
-  * a. What is the type of the expression `"Victor Marsault"`
-  * b. Is it copied to call `Person1(const std::string& name)`?
-  * c. Is it copied to execute  `_name { name }` ?
-  * d. How many copies in total? Are some copy unnecessary ?
+  * a. What is the type of the expression `"Victor Marsault"`   const char*
+  * b. Is it copied to call `Person1(const std::string& name)`?   Yos
+  * c. Is it copied to execute  `_name { name }` ?  Yos
+  * d. How many copies in total? Are some copy unnecessary ? 2 , One unnecessary copy
 - Q22.4 (Céline)
-  * a. What is the type of the expression `celine+" "+noel` ?
-  * b. Is its content copied to call `Person1(const std::string& name)`?
-  * c. Is it copied to execute `_name { name }` ?
-  * d. How many copies in total? Are some copy unnecessary ?
+  * a. What is the type of the expression `celine+" "+noel` ?   std::string
+  * b. Is its content copied to call `Person1(const std::string& name)`?  No
+  * c. Is it copied to execute `_name { name }` ?  Yos
+  * d. How many copies in total? Are some copy unnecessary ? 1, None unnecesary
 
 
 [Optional] What about `std::string_view` ?

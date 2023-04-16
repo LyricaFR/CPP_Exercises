@@ -61,7 +61,7 @@ TEST_CASE("f. Adding a list to an array: This code would not compile. Why?")
 #ifdef OMITTED_BY_COMPILER
     std::array<int, 2> my_array { 0 };
     std::list<int>     my_list { 1 };
-    add_all(my_list, my_vector);
+    add_all(my_array, my_list);
     REQUIRE(my_array == std::array<int, 2> { 0, 1 });
 #endif
 }
